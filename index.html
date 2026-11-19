@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1220">
+  <title>Signal Path | IE2034 Analog Electronics</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="Signal Path home"><span class="brandmark">∿</span><span>SIGNAL<span class="brand-light">/</span>PATH</span></a>
+      <nav aria-label="Primary"><a href="#architecture">Architecture</a><a href="#lab">Live lab</a><a href="#evidence">Evidence</a><a href="docs/engineering-notes.md">Engineering notes ↗</a></nav>
+      <span class="course">IE2034 · ANALOG ELECTRONICS</span>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow"><span class="pulse"></span> GROUP 03 / 2026 DESIGN RECORD</div>
+        <h1>Make the signal<br><em>worth hearing.</em></h1>
+        <p class="lede">A three-stage analog conditioner for a basic AM radio audio output: remove low-frequency interference, amplify a weak signal, and roll off high-frequency noise.</p>
+        <div class="hero-actions"><a class="button primary" href="#lab">Explore the response <span>↗</span></a><a class="button secondary" href="#architecture">See the circuit path <span>↓</span></a></div>
+        <div class="hero-index">01 / HIGH PASS &nbsp;·&nbsp; 02 / BJT GAIN &nbsp;·&nbsp; 03 / LOW PASS</div>
+        <div class="hero-wave" aria-hidden="true"><canvas id="heroCanvas"></canvas></div>
+      </section>
+
+      <section class="metrics" aria-label="Design targets">
+        <div><small>LOW EDGE</small><strong>2 <span>kHz</span></strong><p>high-pass target</p></div>
+        <div><small>MID-BAND GAIN</small><strong>≥60<span>×</span></strong><p>assignment target</p></div>
+        <div><small>HIGH EDGE</small><strong>12 <span>kHz</span></strong><p>low-pass target</p></div>
+        <div><small>SUPPLY</small><strong>9 <span>V</span></strong><p>DC rail</p></div>
+      </section>
+
+      <section id="architecture" class="section architecture">
+        <div class="section-head"><div><span class="kicker">01 / ARCHITECTURE</span><h2>One signal. Three deliberate stages.</h2></div><p>The physical prototype was assembled on dot board. This diagram is a functional signal path, not a wiring schematic.</p></div>
+        <div class="stage-grid">
+          <article class="stage"><div class="stage-top"><span>01</span><span class="stage-symbol">╱</span></div><h3>High-pass filter</h3><p>The input RC network reduces components below the useful band before amplification.</p><div class="stage-foot"><span>820 Ω + 100 nF</span><strong>≈1.94 kHz</strong></div></article>
+          <article class="stage"><div class="stage-top"><span>02</span><span class="stage-symbol">△</span></div><h3>Common-emitter BJT</h3><p>A 2N3904 stage with divider bias raises the filtered signal under a 9 V supply.</p><div class="stage-foot"><span>82 kΩ / 27 kΩ bias</span><strong>~61× reported</strong></div></article>
+          <article class="stage"><div class="stage-top"><span>03</span><span class="stage-symbol">╲</span></div><h3>Low-pass filter</h3><p>A final RC stage reduces high-frequency content at the output.</p><div class="stage-foot"><span>11 kΩ + 1.2 nF</span><strong>≈12.06 kHz</strong></div></article>
+        </div>
+      </section>
+
+      <section id="lab" class="section lab">
+        <div class="section-head"><div><span class="kicker">02 / INTERACTIVE LAB</span><h2>Trace the frequency response.</h2></div><p>An ideal first-order RC model based on selected component values. The gain control is an illustrative parameter, not a transistor simulation.</p></div>
+        <div class="lab-panel">
+          <div class="chart-toolbar"><div class="chart-title"><span class="live-dot"></span> THEORETICAL TRANSFER MAGNITUDE <small>LOG FREQUENCY · dB</small></div><div class="legend"><span><i class="swatch teal"></i>HPF</span><span><i class="swatch amber"></i>Combined</span><span><i class="swatch purple"></i>LPF</span></div></div>
+          <canvas id="responseChart" role="img" aria-label="Calculated high-pass, low-pass, and combined frequency response from 100 Hz to 100 kHz"></canvas>
+          <div class="controls"><label for="frequency">Probe frequency <output id="frequencyValue">7.0 kHz</output></label><input id="frequency" type="range" min="2" max="5" step="0.001" value="3.845" aria-label="Probe frequency on logarithmic scale"><label for="gain">Illustrative gain <output id="gainValue">61×</output></label><input id="gain" type="range" min="1" max="90" step="1" value="61"></div>
+          <div class="readouts"><div><small>AFTER HIGH PASS</small><strong id="hpValue">—</strong></div><div><small>AFTER AMPLIFIER</small><strong id="ampValue">—</strong></div><div><small>AFTER LOW PASS</small><strong id="outValue">—</strong></div></div>
+        </div>
+        <p class="method-note">Calculated curves omit transistor bandwidth, loading, coupling capacitors, clipping and component tolerances. They must not be interpreted as oscilloscope measurements.</p>
+      </section>
+
+      <section id="evidence" class="section evidence"><div class="section-head"><div><span class="kicker">03 / EVIDENCE &amp; LIMITS</span><h2>Measured claims, clearly labelled.</h2></div><p>The group report describes waveform observations at 1, 7, 10, 20 and 24 kHz, with attenuation outside the intended band.</p></div><div class="evidence-grid"><article><span>REPORTED AMPLIFIER</span><strong>~70×</strong><p>Gain stated for the amplifier stage around 5 kHz.</p></article><article><span>REPORTED COMPLETE PATH</span><strong>~61×</strong><p>Gain stated for the assembled multistage circuit.</p></article><article><span>REPORTED AMPLITUDES</span><strong>50 mV → 3.27 V</strong><p>These values imply 65.4× when directly divided; measurement context needs confirmation.</p></article></div><div class="callout"><strong>Design record, not a fabricated simulation.</strong><p>See the <a href="docs/engineering-notes.md">engineering notes</a> for discrepancies found in the source report and measurements to add when original circuit files and oscilloscope captures are available.</p></div></section>
+    </main>
+    <footer><span>SIGNAL/PATH · GROUP 03</span><span>IE2034 / SLIIT / 2026</span><a href="#top">BACK TO TOP ↑</a></footer>
+  </div>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
