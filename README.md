@@ -6,6 +6,40 @@
 
 This repository presents a dot-board analog signal conditioner intended for a basic AM radio audio output. It pairs the reported hardware design and selected original report images with a browser-based, first-order RC model. The model is intentionally identified as theoretical; it does not reproduce measured oscilloscope traces or simulate the BJT transistor.
 
+## Project at a glance
+
+| Design target | Reported implementation |
+| --- | --- |
+| Reject low-frequency interference below 2 kHz | 820 Ω + 100 nF high-pass network; calculated corner ≈1.94 kHz |
+| Raise weak signal amplitude by at least 60× | 2N3904 common-emitter stage; ~70× stage gain and ~61× full-path gain reported |
+| Reduce high-frequency noise beyond 12 kHz | 1.2 nF output low-pass network; 10 kΩ shown in schematic, 11 kΩ used in report calculation |
+| Operate from a 9 V DC supply | Divider-biased transistor stage on a soldered dot board |
+
+## Visual record
+
+The images below are extracted from the supplied final report. They show the reported circuit and prototype; they are not newly generated measurements.
+
+![Complete circuit drawing from the Group 03 report](docs/assets/report-p08-01.jpg)
+
+*Complete circuit schematic, report p. 8. The output resistor is marked 10 kΩ here; the design calculation uses 11 kΩ.*
+
+![Soldered dot-board prototype from the Group 03 report](docs/assets/report-p11-01.jpg)
+
+*Soldered dot-board prototype, report p. 11.*
+
+<details>
+<summary>View selected oscilloscope captures</summary>
+
+| High-pass: 1 kHz | High-pass: 10 kHz |
+| --- | --- |
+| ![1 kHz oscilloscope capture](docs/assets/report-p11-03.jpg) | ![10 kHz oscilloscope capture](docs/assets/report-p11-02.jpg) |
+
+| Low-pass: 20 kHz | Complete path: 7 kHz |
+| --- | --- |
+| ![20 kHz oscilloscope capture](docs/assets/report-p12-01.jpg) | ![7 kHz oscilloscope capture](docs/assets/report-p13-02.jpg) |
+
+</details>
+
 ## Explore
 
 With Node.js 18 or later, run `npm start` and open `http://localhost:4173`. No package installation or build step is required. Run `npm test` to check the transfer-function math.
@@ -41,3 +75,4 @@ Based on the supplied **IE2034 Final Assignment** brief and **Group No. 03 Analo
 ## Project team
 
 Group 03, IE2034 Analog Electronics (2026). Individual credits can be added with the team's approval.
+
