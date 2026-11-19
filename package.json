@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.js",
+    "render:response": "node scripts/render-response.js",
     "test": "node src/model.test.js"
   }
 }
