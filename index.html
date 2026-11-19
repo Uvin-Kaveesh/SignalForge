@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c1220">
-  <title>Multi-Stage Analog Signal Conditioning Circuit | IE2034</title>
+  <title>SignalForge | Multi-Stage Analog Signal Conditioning Circuit</title>
   <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
   <div class="shell">
     <header class="masthead">
-      <a class="brand" href="#top" aria-label="Project home"><span class="brandmark">∿</span><span>ANALOG<span class="brand-light">/</span>03</span></a>
-      <nav aria-label="Primary"><a href="#architecture">Architecture</a><a href="#lab">Response explorer</a><a href="#evidence">Evidence</a><a href="docs/engineering-notes.md">Engineering notes ↗</a></nav>
+      <a class="brand" href="#top" aria-label="SignalForge home"><span class="brandmark">∿</span><span>SIGNAL<span class="brand-light">/</span>FORGE</span></a>
+      <nav aria-label="Primary"><a href="#architecture">Architecture</a><a href="#build">Build record</a><a href="#lab">Response</a><a href="#evidence">Evidence</a></nav>
       <span class="course">IE2034 · ANALOG ELECTRONICS</span>
     </header>
 
@@ -41,8 +41,17 @@
         </div>
       </section>
 
+      <section id="build" class="section build-record">
+        <div class="section-head"><div><span class="kicker">02 / HARDWARE RECORD</span><h2>From schematic to soldered board.</h2></div><p>Original project visuals reproduced from the supplied Group 03 report. The schematic and board image document the reported build.</p></div>
+        <div class="build-grid">
+          <figure class="photo-card schematic"><div class="photo-frame"><img src="docs/assets/report-p08-01.jpg" alt="Complete circuit schematic showing high-pass network, transistor amplifier, coupling capacitors and output low-pass network" loading="lazy"></div><figcaption><span>01 / COMPLETE SCHEMATIC</span><p>The report's circuit drawing includes the filter networks, BJT bias divider, coupling capacitors and 9 V rail. Its output resistor is labelled 10 kΩ; the calculation page uses 11 kΩ.</p></figcaption></figure>
+          <figure class="photo-card board"><div class="photo-frame"><img src="docs/assets/report-p11-01.jpg" alt="Soldered dot-board analog signal conditioning circuit from the group report" loading="lazy"></div><figcaption><span>02 / SOLDERED DOT BOARD</span><p>The assembled prototype pictured after soldering in the final report.</p></figcaption></figure>
+        </div>
+        <div class="parts-strip"><div><span>ACTIVE DEVICE</span><strong>2N3904 NPN</strong></div><div><span>BIAS DIVIDER</span><strong>82 kΩ / 27 kΩ</strong></div><div><span>COLLECTOR / EMITTER</span><strong>4.7 kΩ / 1 kΩ</strong></div><div><span>AC COUPLING</span><strong>2 × 10 µF</strong></div><div><span>EMITTER BYPASS</span><strong>100 µF</strong></div></div>
+      </section>
+
       <section id="lab" class="section lab">
-        <div class="section-head"><div><span class="kicker">02 / RESPONSE EXPLORER</span><h2>Trace the frequency response.</h2></div><p>An ideal first-order RC model based on selected component values. The gain control is an illustrative parameter, not a transistor simulation.</p></div>
+        <div class="section-head"><div><span class="kicker">03 / RESPONSE EXPLORER</span><h2>Trace the frequency response.</h2></div><p>An ideal first-order RC model based on selected component values. The gain control is an illustrative parameter, not a transistor simulation.</p></div>
         <div class="lab-panel">
           <div class="chart-toolbar"><div class="chart-title"><span class="live-dot"></span> THEORETICAL TRANSFER MAGNITUDE <small>LOG FREQUENCY · dB</small></div><div class="legend"><span><i class="swatch teal"></i>HPF</span><span><i class="swatch amber"></i>Combined</span><span><i class="swatch purple"></i>LPF</span></div></div>
           <canvas id="responseChart" role="img" aria-label="Calculated high-pass, low-pass, and combined frequency response from 100 Hz to 100 kHz"></canvas>
@@ -52,9 +61,14 @@
         <p class="method-note">Calculated curves omit transistor bandwidth, loading, coupling capacitors, clipping and component tolerances. They must not be interpreted as oscilloscope measurements.</p>
       </section>
 
-      <section id="evidence" class="section evidence"><div class="section-head"><div><span class="kicker">03 / EVIDENCE &amp; LIMITS</span><h2>Measured claims, clearly labelled.</h2></div><p>The group report describes waveform observations at 1, 7, 10, 20 and 24 kHz, with attenuation outside the intended band.</p></div><div class="evidence-grid"><article><span>REPORTED AMPLIFIER</span><strong>~70×</strong><p>Gain stated for the amplifier stage around 5 kHz.</p></article><article><span>REPORTED COMPLETE PATH</span><strong>~61×</strong><p>Gain stated for the assembled multistage circuit.</p></article><article><span>REPORTED AMPLITUDES</span><strong>50 mV → 3.27 V</strong><p>These values imply 65.4× when directly divided; measurement context needs confirmation.</p></article></div><div class="callout"><strong>Design record, not a fabricated simulation.</strong><p>See the <a href="docs/engineering-notes.md">engineering notes</a> for discrepancies found in the source report and measurements to add when original circuit files and oscilloscope captures are available.</p></div></section>
+      <section id="evidence" class="section evidence"><div class="section-head"><div><span class="kicker">04 / EXPERIMENTAL RECORD</span><h2>What the instruments showed.</h2></div><p>Selected original oscilloscope images from the report. Captions identify their report context; the numerical traces are not reanalysed here.</p></div><div class="capture-grid">
+        <figure class="capture-card"><img src="docs/assets/report-p11-03.jpg" alt="Oscilloscope image from the report's high-pass filter comparison" loading="lazy"><figcaption><strong>High-pass response</strong><span>Report p. 11 · 1 kHz example</span></figcaption></figure>
+        <figure class="capture-card"><img src="docs/assets/report-p11-02.jpg" alt="Oscilloscope image from the report's high-pass filter comparison at 10 kHz" loading="lazy"><figcaption><strong>Pass-band comparison</strong><span>Report p. 11 · 10 kHz example</span></figcaption></figure>
+        <figure class="capture-card"><img src="docs/assets/report-p12-01.jpg" alt="Oscilloscope image from the report's low-pass filter comparison at 20 kHz" loading="lazy"><figcaption><strong>Upper-band roll-off</strong><span>Report p. 12 · 20 kHz example</span></figcaption></figure>
+        <figure class="capture-card"><img src="docs/assets/report-p13-02.jpg" alt="Oscilloscope image from the report's combined circuit test at 7 kHz" loading="lazy"><figcaption><strong>Complete signal path</strong><span>Report p. 13 · 7 kHz example</span></figcaption></figure>
+      </div><div class="evidence-grid"><article><span>REPORTED AMPLIFIER</span><strong>~70×</strong><p>Gain stated for the amplifier stage around 5 kHz.</p></article><article><span>REPORTED COMPLETE PATH</span><strong>~61×</strong><p>Gain stated for the assembled multistage circuit.</p></article><article><span>REPORTED AMPLITUDES</span><strong>50 mV → 3.27 V</strong><p>These values imply 65.4× when directly divided; measurement context needs confirmation.</p></article></div><div class="callout"><strong>Engineering interpretation.</strong><p>The report describes attenuation below 2 kHz and above 12 kHz, with useful amplification between them. See the <a href="docs/engineering-notes.md">engineering notes</a> for component discrepancies and measurement limitations.</p></div></section>
     </main>
-    <footer><span>ANALOG/03 · SIGNAL CONDITIONING CIRCUIT</span><span>IE2034 / SLIIT / 2026</span><a href="#top">BACK TO TOP ↑</a></footer>
+    <footer><span>SIGNALFORGE · ANALOG CONDITIONING CIRCUIT</span><span>IE2034 / SLIIT / 2026</span><a href="#top">BACK TO TOP ↑</a></footer>
   </div>
   <script type="module" src="src/app.js"></script>
 </body>
