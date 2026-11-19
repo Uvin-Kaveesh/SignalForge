@@ -1,6 +1,6 @@
-# Signal Path
+# Multi-Stage Analog Signal Conditioning Circuit
 
-**A design record and interactive frequency response lab for the IE2034 Analog Electronics Group 03 assignment.**
+**A design record and interactive frequency-response model for the IE2034 Analog Electronics Group 03 assignment.**
 
 This repository presents a dot-board analog signal conditioner intended for a basic AM radio audio output. It pairs the reported hardware design with a browser-based, first-order RC model. The model is intentionally identified as theoretical; it does not reproduce measured oscilloscope traces or simulate the BJT transistor.
 
@@ -21,7 +21,7 @@ The assignment targets a 2 kHz high-pass edge, a mid-band gain of at least 60, a
 
 | Path | Purpose |
 | --- | --- |
-| `index.html` | Editorial project page and interactive lab |
+| `index.html` | Project page and interactive response explorer |
 | `src/model.js` | Dependency-free RC calculations |
 | `src/app.js` | Canvas visualization and controls |
 | `src/model.test.js` | Numerical checks using Node's test runner |
