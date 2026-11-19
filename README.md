@@ -1,12 +1,14 @@
-# Multi-Stage Analog Signal Conditioning Circuit
+# SignalForge
+
+### Multi-Stage Analog Signal Conditioning Circuit
 
 **A design record and interactive frequency-response model for the IE2034 Analog Electronics Group 03 assignment.**
 
-This repository presents a dot-board analog signal conditioner intended for a basic AM radio audio output. It pairs the reported hardware design with a browser-based, first-order RC model. The model is intentionally identified as theoretical; it does not reproduce measured oscilloscope traces or simulate the BJT transistor.
+This repository presents a dot-board analog signal conditioner intended for a basic AM radio audio output. It pairs the reported hardware design and selected original report images with a browser-based, first-order RC model. The model is intentionally identified as theoretical; it does not reproduce measured oscilloscope traces or simulate the BJT transistor.
 
 ## Explore
 
-Open `index.html` in a modern browser. No installation or build step is required. For local development, any static HTTP server will work. Run `npm test` to check the transfer-function math; Node.js 18 or later is recommended.
+With Node.js 18 or later, run `npm start` and open `http://localhost:4173`. No package installation or build step is required. Run `npm test` to check the transfer-function math.
 
 ## Signal chain
 
@@ -21,7 +23,8 @@ The assignment targets a 2 kHz high-pass edge, a mid-band gain of at least 60, a
 
 | Path | Purpose |
 | --- | --- |
-| `index.html` | Project page and interactive response explorer |
+| `index.html` | Project page, hardware gallery and interactive response explorer |
+| `docs/assets/` | Selected schematic, prototype and oscilloscope images extracted from the supplied report |
 | `src/model.js` | Dependency-free RC calculations |
 | `src/app.js` | Canvas visualization and controls |
 | `src/model.test.js` | Numerical checks using Node's test runner |
@@ -33,7 +36,7 @@ The chart multiplies ideal first-order high-pass and low-pass magnitudes by a se
 
 ## Provenance
 
-Based on the supplied **IE2034 Final Assignment** brief and **Group No. 03 Analog Electronics Final Report** (2026). The original PDFs are not redistributed here. Hardware photographs, circuit CAD files and oscilloscope captures can be added after permission and original files are supplied.
+Based on the supplied **IE2034 Final Assignment** brief and **Group No. 03 Analog Electronics Final Report** (2026). The original PDFs are not redistributed here. Six images in `docs/assets/` are reproduced from the report and labelled by report page. Original CAD files and numeric oscilloscope exports can be added when available.
 
 ## Project team
 
