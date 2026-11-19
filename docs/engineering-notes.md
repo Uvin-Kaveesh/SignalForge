@@ -20,7 +20,7 @@ For an isolated first-order high-pass, `|H_HP| = f / √(f² + fc²)`. For an is
 - The combined circuit was observed at 1, 7, 10 and 24 kHz, with an approximate overall gain of 61 stated.
 - The report describes a dot-board build powered by 9 V.
 
-These are qualitative observations and rounded claims from the supplied report. This repository contains no original numerical sweep data or oscilloscope files.
+These are qualitative observations and rounded claims from the supplied report. Selected oscilloscope screenshots are reproduced in `docs/assets/`, but this repository contains no original numerical sweep data or instrument exports.
 
 ## Items to verify against original hardware
 
@@ -34,8 +34,8 @@ These are qualitative observations and rounded claims from the supplied report. 
 ## Useful additions when files become available
 
 - Original circuit drawing or CAD source with all nets and component values.
-- Dot-board photographs with component and test-point labels.
-- Oscilloscope captures or CSV exports tagged with frequency, amplitude definition, input/output nodes and instrument settings.
+- Higher-resolution dot-board photographs with component and test-point labels.
+- Original oscilloscope captures or CSV exports tagged with frequency, amplitude definition, input/output nodes and instrument settings.
 - A measurement table for supply voltage, bias voltages, gain and frequency sweep, including uncertainty.
 
 ## Source documents
