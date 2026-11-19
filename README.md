@@ -27,8 +27,9 @@ The images below are extracted from the supplied final report. They show the rep
 
 *Soldered dot-board prototype, report p. 11.*
 
-<details>
-<summary>View selected oscilloscope captures</summary>
+## Oscilloscope captures
+
+These four captures from the report stay visible in the README. The labels follow the report's figure captions; they are separate from the calculated graphic below.
 
 | High-pass: 1 kHz | High-pass: 10 kHz |
 | --- | --- |
@@ -38,11 +39,11 @@ The images below are extracted from the supplied final report. They show the rep
 | --- | --- |
 | ![20 kHz oscilloscope capture](docs/assets/report-p12-01.jpg) | ![7 kHz oscilloscope capture](docs/assets/report-p13-02.jpg) |
 
-</details>
+## Frequency response, in brief
 
-## Explore
+![Calculated high-pass, low-pass and combined response](docs/assets/theoretical-response.svg)
 
-With Node.js 18 or later, run `npm start` and open `http://localhost:4173`. No package installation or build step is required. Run `npm test` to check the transfer-function math.
+*Static, first-order RC model shown directly in the README. The combined curve uses an illustrative constant 61× gain; it is not an oscilloscope trace or a transistor simulation.*
 
 ## Signal chain
 
@@ -62,7 +63,12 @@ The assignment targets a 2 kHz high-pass edge, a mid-band gain of at least 60, a
 | `src/model.js` | Dependency-free RC calculations |
 | `src/app.js` | Canvas visualization and controls |
 | `src/model.test.js` | Numerical checks using Node's test runner |
+| `scripts/render-response.js` | Generates the small README response graphic from the same JS model |
 | `docs/engineering-notes.md` | Component record, calculations and open verification items |
+
+## For contributors
+
+The project page is also available in `index.html`, with an interactive response explorer and the same hardware gallery. Run `npm start` with Node.js 18 or later to preview it locally. Run `npm run render:response` after changing model values, then `npm test`. The README above remains readable on GitHub without running anything.
 
 ## Model boundaries
 
@@ -75,4 +81,3 @@ Based on the supplied **IE2034 Final Assignment** brief and **Group No. 03 Analo
 ## Project team
 
 Group 03, IE2034 Analog Electronics (2026). Individual credits can be added with the team's approval.
-
